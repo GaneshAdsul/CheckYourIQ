@@ -1,7 +1,5 @@
 package com.ganeshadsul.checkyouriq
 
-import android.content.Context
-import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -48,9 +46,58 @@ class GameFragment : Fragment() {
         //return inflater.inflate(R.layout.fragment_game, container, false)
         val binding = DataBindingUtil.inflate<FragmentGameBinding>(inflater,R.layout.fragment_game,container,false)
         return binding.root
+
+        // Shuffles the questions and sets the question index to the first question.
+        randomizeQuestions()
+
         //Binding this fragment class to the layout
         binding.game = this
 
-    }
+        binding.submitButton.setOnClickListener @Suppress("UNUSED_ANONYMOUS_PARAMETER")
+        { view:View ->
+            val check_answer_id = binding.questionOptions.checkedRadioButtonId
+            //Do nothing if answerIndex is -1
+            if (-1 !=check_answer_id) {
+                var answerIndex = 0
+                when(check_answer_id){
+                    //Get index of answer selected
+                    R.id.second_answer_radio_option -> answerIndex =1
+                    R.id.third_answer_radio_option -> answerIndex =2
+                    R.id.forth_answer_radio_option -> answerIndex =3
+                    R.id.fifth_answer_radio_option -> answerIndex =4
+                }
+                //check if the answer selected is right
+                if (answers[answerIndex] == currentQuestion.answers[0]){
+                    questionIndex++
 
+                    //advance to next question
+                    if (questionIndex < numOfQuestions){
+                        currentQuestion = questions[questionIndex]
+                        setQuestions()
+                        binding.invalidateAll()
+                    }
+                    else{
+                        //we won
+                        //goto game won fragment
+                    }
+                }
+                else{
+                    //we lost
+                    //goto game lost fragment
+                }
+            }
+        }
+    }
+    private fun randomizeQuestions(){
+        questions.shuffle()
+        questionIndex = 0
+        setQuestions()
+    }
+    private fun setQuestions(){
+        currentQuestion = questions[questionIndex]
+
+        //shuffling answers of that questions
+        answers = currentQuestion.answers.toMutableList()
+        answers.shuffle()
+    }
 }
