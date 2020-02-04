@@ -14,4 +14,9 @@
         <item name="android:fontFamily">@font/roboto</item>
     </style>
 
+    <style name="answer_radio_option_style">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textSize">@dimen/answer_text_size</item>
+    </style>
+
 </resources>

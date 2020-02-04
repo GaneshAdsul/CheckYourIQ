@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".GameFragment">
+
+    <data>
+        <variable
+            name="game"
+            type="com.ganeshadsul.checkyouriq.GameFragment" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="350dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="@dimen/margin_start"
+            android:layout_marginEnd="@dimen/margin_end"
+            android:src="@drawable/questions"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/question_text"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="@dimen/margin_start"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="@dimen/margin_end"
+            android:fontFamily="@font/roboto"
+            android:text="@{game.currentQuestion.quest}"
+            android:textSize="@dimen/question_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+        <RadioGroup
+            android:id="@+id/question_options"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/question_text">
+
+            <RadioButton
+                android:id="@+id/first_answer_radio_option"
+                style="@style/answer_radio_option_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{game.currentQuestion.answers[0]}" />
+
+            <RadioButton
+                android:id="@+id/second_answer_radio_option"
+                style="@style/answer_radio_option_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{game.currentQuestion.answers[1]}" />
+
+            <RadioButton
+                android:id="@+id/third_answer_radio_option"
+                style="@style/answer_radio_option_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{game.currentQuestion.answers[2]}" />
+
+            <RadioButton
+                android:id="@+id/forth_answer_radio_option"
+                style="@style/answer_radio_option_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{game.currentQuestion.answers[3]}" />
+
+            <RadioButton
+                android:id="@+id/fifth_answer_radio_option"
+                style="@style/answer_radio_option_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{game.currentQuestion.answers[4]}" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/submit_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:background="@color/white"
+            android:fontFamily="@font/roboto"
+            android:text="@string/submit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/question_options" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
