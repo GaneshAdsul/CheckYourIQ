@@ -3,4 +3,9 @@
     <string name="about">About</string>
     <string name="click_here">Click Here</string>
     <string name="submit">Submit</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="you_won_text">You are Smarter than most of people.</string>
+    <string name="want_to_play_again">Want to play again?</string>
 </resources>
