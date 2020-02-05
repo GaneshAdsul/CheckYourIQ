@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.ganeshadsul.checkyouriq.databinding.FragmentGameBinding
 
@@ -45,21 +46,19 @@ class GameFragment : Fragment() {
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_game, container, false)
         val binding = DataBindingUtil.inflate<FragmentGameBinding>(inflater,R.layout.fragment_game,container,false)
-        return binding.root
-
-        // Shuffles the questions and sets the question index to the first question.
-        randomizeQuestions()
 
         //Binding this fragment class to the layout
         binding.game = this
+        // Shuffles the questions and sets the question index to the first question.
+        randomizeQuestions()
 
         binding.submitButton.setOnClickListener @Suppress("UNUSED_ANONYMOUS_PARAMETER")
         { view:View ->
-            val check_answer_id = binding.questionOptions.checkedRadioButtonId
+            val checkAnswerId = binding.questionOptions.checkedRadioButtonId
             //Do nothing if answerIndex is -1
-            if (-1 !=check_answer_id) {
+            if (-1 !=checkAnswerId) {
                 var answerIndex = 0
-                when(check_answer_id){
+                when(checkAnswerId){
                     //Get index of answer selected
                     R.id.second_answer_radio_option -> answerIndex =1
                     R.id.third_answer_radio_option -> answerIndex =2
@@ -74,19 +73,25 @@ class GameFragment : Fragment() {
                     if (questionIndex < numOfQuestions){
                         currentQuestion = questions[questionIndex]
                         setQuestions()
+                        binding.questionOptions.clearCheck()
+
                         binding.invalidateAll()
                     }
                     else{
+                        Toast.makeText(context, "You won", Toast.LENGTH_SHORT).show()
                         //we won
                         //goto game won fragment
                     }
                 }
                 else{
+                    Toast.makeText(context, "You Lost", Toast.LENGTH_SHORT).show()
                     //we lost
                     //goto game lost fragment
                 }
             }
         }
+        return binding.root
+
     }
     private fun randomizeQuestions(){
         questions.shuffle()

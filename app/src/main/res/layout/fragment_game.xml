@@ -12,19 +12,20 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:filterTouchesWhenObscured="true">
 
 
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="350dp"
             android:layout_height="150dp"
-            android:layout_marginTop="24dp"
             android:layout_marginStart="@dimen/margin_start"
+            android:layout_marginTop="50dp"
             android:layout_marginEnd="@dimen/margin_end"
             android:src="@drawable/questions"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.461"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -44,7 +45,7 @@
             app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
         <RadioGroup
-            android:id="@+id/question_options"
+            android:id="@+id/questionOptions"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -59,39 +60,39 @@
                 style="@style/answer_radio_option_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{game.currentQuestion.answers[0]}" />
+                android:text="@{game.answers[0]}" />
 
             <RadioButton
                 android:id="@+id/second_answer_radio_option"
                 style="@style/answer_radio_option_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{game.currentQuestion.answers[1]}" />
+                android:text="@{game.answers[1]}" />
 
             <RadioButton
                 android:id="@+id/third_answer_radio_option"
                 style="@style/answer_radio_option_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{game.currentQuestion.answers[2]}" />
+                android:text="@{game.answers[2]}" />
 
             <RadioButton
                 android:id="@+id/forth_answer_radio_option"
                 style="@style/answer_radio_option_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{game.currentQuestion.answers[3]}" />
+                android:text="@{game.answers[3]}" />
 
             <RadioButton
                 android:id="@+id/fifth_answer_radio_option"
                 style="@style/answer_radio_option_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{game.currentQuestion.answers[4]}" />
+                android:text="@{game.answers[4]}" />
         </RadioGroup>
 
         <Button
-            android:id="@+id/submit_button"
+            android:id="@+id/submitButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -103,6 +104,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/question_options" />
+            app:layout_constraintTop_toBottomOf="@+id/questionOptions" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

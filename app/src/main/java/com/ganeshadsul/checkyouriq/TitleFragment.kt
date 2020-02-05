@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.Navigation
 import com.ganeshadsul.checkyouriq.databinding.FragmentTitleBinding
 
 class TitleFragment : Fragment() {
@@ -16,6 +17,11 @@ class TitleFragment : Fragment() {
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_title, container, false)
         val binding = DataBindingUtil.inflate<FragmentTitleBinding>(inflater,R.layout.fragment_title,container,false)
+
+        binding.clickHereButton.setOnClickListener (
+            Navigation.createNavigateOnClickListener(R.id.action_titleFragment_to_gameFragment)
+        )
+
         return binding.root
     }
 }
