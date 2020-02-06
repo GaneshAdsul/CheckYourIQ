@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import com.ganeshadsul.checkyouriq.databinding.FragmentGameBinding
 
 
@@ -78,15 +79,15 @@ class GameFragment : Fragment() {
                         binding.invalidateAll()
                     }
                     else{
-                        Toast.makeText(context, "You won", Toast.LENGTH_SHORT).show()
                         //we won
                         //goto game won fragment
+                        view.findNavController().navigate(R.id.action_gameFragment_to_gameWonFragment)
                     }
                 }
                 else{
-                    Toast.makeText(context, "You Lost", Toast.LENGTH_SHORT).show()
                     //we lost
                     //goto game lost fragment
+                    view.findNavController().navigate(R.id.action_gameFragment_to_gameOverFragment)
                 }
             }
         }
