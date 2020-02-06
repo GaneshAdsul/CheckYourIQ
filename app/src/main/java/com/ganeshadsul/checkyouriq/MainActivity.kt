@@ -15,11 +15,13 @@ class MainActivity : AppCompatActivity() {
         //setContentView(R.layout.activity_main)
         val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this,R.layout.activity_main)
 
-        //To hookup the action bar to navigation NavigationUi needs access to navigationController
+
+        //To hookup the action bar to navigation NavigationUI needs access to navigationController
         val navController = this.findNavController(R.id.navHostFragment)
         NavigationUI.setupActionBarWithNavController(this,navController)
     }
 
+    //In the function overridden below we specify what should happen when we press up button(upper left back button)
     override fun onSupportNavigateUp(): Boolean {
         val navController = this.findNavController(R.id.navHostFragment)
         return navController.navigateUp()
